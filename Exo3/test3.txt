@@ -1,0 +1,2 @@
+Ceci est un nouveau test d'accès à un fichier.
+L'objectif est de toujours lire plus !
