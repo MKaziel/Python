@@ -6,11 +6,20 @@ def alea():
 
 def verif_coup(coup_joueur: int):
     if coup_joueur == 1:
-        return 1
+        if input("Vous avez joué Pierre, êtes-vous sur ? (Y or N)") == "Y":
+            return coup_joueur
+        else:
+            return 0
     elif coup_joueur == 2:
-        return 2
+        if input("Vous avez joué Papier, êtes-vous sur ? (Y or N)") == "Y":
+            return coup_joueur
+        else:
+            return 0
     elif coup_joueur == 3:
-        return 3
+        if input("Vous avez joué Ciseaux, êtes-vous sur ? (Y or N)") == "Y":
+            return coup_joueur
+        else:
+            return 0
     else: 
         return -1
 
@@ -53,19 +62,21 @@ def game():
         joueur=input("Veuillez entrez votre choix ( 1: Pierre, 2: Papier, 3: Ciseaux ) :")
 
         if(joueur.isdigit()):
-            if verif_coup(int(joueur)) != -1 :
+            verif = verif_coup(int(joueur))
+            if verif == 0 :
+                print("Très bien, relancer votre choix\n")
+            elif verif != -1 :
                 resultat = resultat_tour(int(joueur),ordi)
-            
-            if resultat == 1:
-                print("Vous gagnez !")
-                compteur_joueur += 1
-            elif resultat == 2:
-                print("l'ordianteur gagne.")
-                compteur_oridnateur += 1
-            elif resultat == 0 :
-                print("C'est un match nul !")
-            else :
-                raise ValueError(f"Des données non attendu on été fournise.\nCoup Joeur : {joueur} | Coup Ordinateur : {ordi}")
+                if resultat == 1:
+                    print("Vous gagnez !")
+                    compteur_joueur += 1
+                elif resultat == 2:
+                    print("l'ordianteur gagne.")
+                    compteur_oridnateur += 1
+                elif resultat == 0 :
+                    print("C'est un match nul !")
+                else :
+                    raise ValueError(f"Des données non attendu on été fournise.\nCoup Joeur : {joueur} | Coup Ordinateur : {ordi}")
         else:
             print("\nVeuillez renseignez un nombre comme précisé dans la consigne.\n")
 
