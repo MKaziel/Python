@@ -47,16 +47,23 @@ def game():
         print("Quelle est votre proposition?")
         proposition = input("Entrez le montant : ")
 
-        ecart = question_prix(prix, int(proposition))
+        if(proposition.isdigit()):
+            ecart = question_prix(prix, int(proposition))
 
-        if ecart == 0:
-            game = 0
-        elif ecart > 1000 :
-            score -= 100
-        elif ecart > 500 :
-            score -= 50
+            if ecart == 0:
+                game = 0
+            elif ecart > 1000 :
+                score -= 100
+            elif ecart > 500 :
+                score -= 50
+            else :
+                score -= 25
         else :
-            score -= 25
+            print("Veuillez entrer un nombre valide!")
+        
+        if score == 0 :
+            print("Vous avez perdu votre score est de 0 ! Mais n'ayez pas peur vous pourrez retenter votre chance plus tard !")
+            game = 0
 
     print(f"Ceci conclu votre parti ! Votre score était de : {score} ! Nous vous remercions et espérons vous revoir très prochainement.")
 
