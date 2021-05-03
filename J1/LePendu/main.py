@@ -1,4 +1,5 @@
 import os
+import random
 
 def clear_function():
     clear = lambda: os.system('cls')
@@ -27,6 +28,7 @@ def verif_mot(tab_lettre, mot):
     return cpt_lettre
 
 def game():
+    mot_par_default = ['test', 'charlatant', 'planetarium', 'taupe', 'glace', 'citron']
     mot = ""
     lettre_trouver = []
     j2=""
@@ -43,6 +45,11 @@ def game():
         mot = input("Joueur 1, Choisissez un mot : ").lower()
         length = len(mot)
         clear_function()
+    else:
+        rdm = random.randint(0,len(mot_par_default)-1);
+        mot = mot_par_default[rdm]
+        length = len(mot)
+
     
     while(vie != 0 and game != 0) :
         print("Joueur 2, c'est à vous maintenant ! Essayer de devinez le mot.")
